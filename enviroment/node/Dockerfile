@@ -5,7 +5,8 @@ RUN apk add --update \
             ttf-freefont \
             chromium \
             git \
-            docker docker-compose
+            docker docker-compose \
+            openssh
 
 RUN mkdir /mnt/workspace && \
     mkdir /workspace && \
