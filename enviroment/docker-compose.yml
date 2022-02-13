@@ -1,0 +1,28 @@
+version: '3'
+
+services: 
+  brewing_support_node:
+    build:
+      dockerfile: "Dockerfile"
+      context: "node"
+    container_name: brewing_support_node
+    volumes:
+      - ".:/mnt/workspace:cached"
+      - "brewing_support_node_workspace:/workspace"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    tty: true
+    ports: 
+      - "3000:3000"
+    depends_on: 
+      - brewing_support_db
+  brewing_support_db:
+    image: postgres:11.3
+    container_name: brewing_support_db
+    environment: 
+      POSTGRES_USER: "brewing_support"
+      POSTGRES_PASSWORD: "brewing_support"
+      POSTGRES_DB: "brewing_supportdb"
+
+volumes:
+  brewing_support_node_workspace:
+
