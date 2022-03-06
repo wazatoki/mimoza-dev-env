@@ -6,7 +6,9 @@ RUN apk add --update \
             chromium \
             git \
             docker docker-compose \
-            openssh
+            openssh \
+            openjdk11 \
+            graphviz
 
 RUN mkdir /mnt/workspace && \
     mkdir /workspace && \
